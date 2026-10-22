@@ -1,19 +1,19 @@
-# Pièges rencontrés
+# Known pitfalls
 
-- **Props Remotion** : `component` attend des props indexables → `type Props = {...}`, pas `interface` (sinon TS2322).
-- **Scripts avec `await` au niveau racine** : extension `.mts` (tsx sort du CJS pour `.ts`). Import du projet sans extension
-  (`../src/video/voiceover`), sinon TS5097 au typecheck.
-- **`tsx --env-file=.env.local`** pour lire la clé sans l'afficher. Ne jamais faire `echo $ELEVENLABS_API_KEY`.
-- **Voix ElevenLabs très basse** (crête −24 dB) : normaliser avec `loudnorm=I=-15:TP=-1.5:LRA=11` (déjà dans le script).
-  Musique −16 LUFS, bruitages −18 LUFS, puis volumes dans la composition.
-- **Voix de la bibliothèque** : utilisable directement par `voice_id` en TTS ; les extraits `preview_url` sont gratuits.
-- **Minutage** : endpoint `/v1/text-to-speech/{id}/with-timestamps` → `alignment.characters` + temps de début/fin.
-  `wordTime` cherche la première occurrence en minuscules : choisir des mots uniques dans la scène (ou un groupe de mots).
-- **Sous-titres** : `text` et `caption` doivent avoir les mêmes coupures (ponctuation suivie d'une espace) ; les points d'une URL ne coupent pas.
-- **`Date.now()`** interdit au rendu React (lint « impure ») et au prérendu Next (Cache Components) : passer par une fonction utilitaire hors composant.
-- **Captures** : `NEXT_LOCALE` (cookie) peut rediriger vers `/en` ; poser le cookie avant. Dexie stocke `version(1)` en version IndexedDB 10.
-  Supprimer la base de test après (`indexedDB.deleteDatabase`).
-- **Typographie française** : espaces insécables entre chiffres (« 85 000 »), avant les unités et dans les dates, sinon coupures moches dans les captures.
-- **Html5Audio** (pas `Audio`, pas `@remotion/media` si non installé) ; `volume` accepte une fonction de la frame (ducking).
-- **Rendu** : ~3 à 5 min par format pour 1 min ; lancer en arrière-plan et vérifier une planche d'images avant.
-- **SVG** : `transform-origin` en px fonctionne en coordonnées du viewBox ; `overflow: visible` sur le `<svg>` pour les bras levés.
+- **Remotion props**: `component` expects indexable props → `type Props = {...}`, not `interface` (otherwise TS2322).
+- **Scripts with top-level `await`**: `.mts` extension (tsx outputs CJS for `.ts`). Import the project without an extension
+  (`../src/video/voiceover`), otherwise TS5097 at typecheck.
+- **`tsx --env-file=.env.local`** to read the key without printing it. Never run `echo $ELEVENLABS_API_KEY`.
+- **ElevenLabs voice very quiet** (peak −24 dB): normalize with `loudnorm=I=-15:TP=-1.5:LRA=11` (already in the script).
+  Music −16 LUFS, sound effects −18 LUFS, then volumes in the composition.
+- **Library voices**: usable directly by `voice_id` in TTS; the `preview_url` previews are free.
+- **Timing**: endpoint `/v1/text-to-speech/{id}/with-timestamps` → `alignment.characters` + start/end times.
+  `wordTime` looks for the first lowercase occurrence: choose words that are unique in the scene (or a group of words).
+- **Captions**: `text` and `caption` must have the same breaks (punctuation followed by a space); the dots of a URL do not break.
+- **`Date.now()`** forbidden in React rendering (lint "impure") and in Next prerendering (Cache Components): go through a utility function outside the component.
+- **Screenshots**: `NEXT_LOCALE` (cookie) can redirect to `/en`; set the cookie first. Dexie stores `version(1)` as IndexedDB version 10.
+  Delete the test database afterwards (`indexedDB.deleteDatabase`).
+- **French typography**: non-breaking spaces between digit groups ("85 000"), before units and in dates, otherwise ugly breaks in the screenshots.
+- **Html5Audio** (not `Audio`, not `@remotion/media` if not installed); `volume` accepts a function of the frame (ducking).
+- **Render**: ~3 to 5 min per format for 1 min of video; run it in the background and check a contact sheet of frames first.
+- **SVG**: `transform-origin` in px works in viewBox coordinates; `overflow: visible` on the `<svg>` for raised arms.

@@ -1,44 +1,44 @@
-# Déroulé détaillé
+# Detailed workflow
 
-## 1. Brief (une seule série de questions)
+## 1. Brief (a single set of questions)
 
-- Voix : ElevenLabs (recommandé), voix de l'utilisateur enregistrée, ou Runway.
-- Personnage : persona du public cible (ex. étudiant camerounais), mascotte, ou avatar réaliste (déconseillé).
-- Formats : 9:16 (TikTok, Reels, Statuts) et/ou 16:9 (YouTube), 1:1 si demandé (ajouter un cadrage dans `stage`).
-- Musique : ElevenLabs Music, fichier fourni, ou aucune.
+- Voice: ElevenLabs (recommended), the user's own recorded voice, or Runway.
+- Character: a persona of the target audience (e.g. a Cameroonian student), a mascot, or a realistic avatar (not recommended).
+- Formats: 9:16 (TikTok, Reels, Status) and/or 16:9 (YouTube), 1:1 if requested (add a framing in `stage`).
+- Music: ElevenLabs Music, a provided file, or none.
 
 ## 2. Script
 
-Modèle validé (Mbeng) : [exemple-script-mbeng.md](exemple-script-mbeng.md). 6 scènes, ~55 s avec silences.
-Le personnage est un guide, pas un faux témoignage.
+Approved model (Mbeng): [exemple-script-mbeng.md](exemple-script-mbeng.md). 6 scenes, ~55 s with pauses.
+The character is a guide, not a fake testimonial.
 
 ## 3. ElevenLabs
 
 ```bash
-# voix de la bibliothèque (filtre langue + recherche), extraits gratuits
+# library voices (language filter + search), free previews
 curl -s -H "xi-api-key: $ELEVENLABS_API_KEY" "https://api.elevenlabs.io/v1/shared-voices?language=fr&page_size=100&search=africa"
 ```
 
-Lire la clé via `set -a && . ./.env.local && set +a` dans la même commande, sans l'afficher.
-Envoyer à l'utilisateur 6 à 8 extraits (jeunes voix d'abord pour un public étudiant).
+Read the key with `set -a && . ./.env.local && set +a` in the same command, without printing it.
+Send the user 6 to 8 previews (young voices first for a student audience).
 
-- TTS : `eleven_multilingual_v2`, `language_code: "fr"`, `stability 0.45, similarity_boost 0.8, style 0.35`.
-- Musique : `POST /v1/music` `{ prompt, music_length_ms, force_instrumental: true }` (3 s à 10 min).
-- Bruitages : `POST /v1/sound-generation` `{ text, duration_seconds (0,5–30), prompt_influence: 0.6 }`.
+- TTS: `eleven_multilingual_v2`, `language_code: "fr"`, `stability 0.45, similarity_boost 0.8, style 0.35`.
+- Music: `POST /v1/music` `{ prompt, music_length_ms, force_instrumental: true }` (3 s to 10 min).
+- Sound effects: `POST /v1/sound-generation` `{ text, duration_seconds (0.5–30), prompt_influence: 0.6 }`.
 
-## 4. Adapter les templates
+## 4. Adapt the templates
 
-- `theme.ts` : couleurs et polices de la marque.
-- `character.tsx` : constantes `SKIN`, `HAIR`, `SLEEVE`, couleurs du sweat ; écrans `Screen` → noms des captures dans `public/screens/<lang>/`.
-- `voiceover.ts` : scènes, `VOICE_ID`.
-- `acting.ts` : `sceneBeats` par scène (mots de la nouvelle voix), `POPS`.
-- `voiced.tsx` : `Panel` par scène (visuels, chiffres), textes de fin (URL).
-- `root.tsx` : identifiants de compositions ; scripts npm de rendu vers `out/…`.
+- `theme.ts`: brand colors and fonts.
+- `character.tsx`: constants `SKIN`, `HAIR`, `SLEEVE`, hoodie colors; screens `Screen` → names of the screenshots in `public/screens/<lang>/`.
+- `voiceover.ts`: scenes, `VOICE_ID`.
+- `acting.ts`: `sceneBeats` per scene (words of the new voice), `POPS`.
+- `voiced.tsx`: `Panel` per scene (visuals, numbers), ending text (URL).
+- `root.tsx`: composition ids; npm render scripts to `out/…`.
 
-## 5. Rendu
+## 5. Render
 
 ```bash
-pnpm run video:render:vertical && pnpm run video:render:horizontal   # en arrière-plan
+pnpm run video:render:vertical && pnpm run video:render:horizontal   # in the background
 ```
 
-Envoyer les MP4 (SendUserFile, `display: attach`). Ne pas commiter `out/`.
+Send the MP4s (SendUserFile, `display: attach`). Do not commit `out/`.

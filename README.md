@@ -1,17 +1,17 @@
 # create-voiced-ad
 
-Skill Claude Code pour créer en une passe une **vidéo pub avec voix off et personnage animé** (TikTok, Reels,
-Statuts WhatsApp, YouTube), avec [Remotion](https://www.remotion.dev) et [ElevenLabs](https://elevenlabs.io).
+Claude Code skill to create, in one pass, a **video ad with a voiceover and an animated character** (TikTok, Reels,
+WhatsApp Status, YouTube), with [Remotion](https://www.remotion.dev) and [ElevenLabs](https://elevenlabs.io).
 
-Le personnage n'est pas un simple avatar qui bouge la bouche : il joue la scène. Il salue, montre ce qui
-apparaît à l'écran, sort son téléphone avec les vraies captures de ton app, tape dessus, se prend la tête,
-lève le pouce. La caméra bouge, les mots clés surgissent au rythme de la voix, la musique baisse quand il parle.
+The character is not just an avatar that moves its mouth: it acts out the scene. It waves, points at what
+appears on screen, takes out its phone with real screenshots of your app, taps on it, holds its head in its
+hands, gives a thumbs-up. The camera moves, key words pop in to the rhythm of the voice, the music lowers when it speaks.
 
-- Voix off ElevenLabs avec minutage par caractère → bouche synchronisée et sous-titres calés
-- Personnage SVG à bras articulés (cinématique inverse), téléphone en main, expressions
-- Micro-mouvements automatiques : respiration, clignements, regards, mains qui parlent
-- Musique et bruitages générés (ElevenLabs Music et Sound Effects), son normalisé pour les réseaux
-- Formats 9:16 (« lien dans ma bio ») et 16:9 (« lien dans la description »)
+- ElevenLabs voiceover with per-character timing → synced mouth and timed captions
+- SVG character with articulated arms (inverse kinematics), phone in hand, expressions
+- Automatic micro-movements: breathing, blinking, glances, talking hands
+- Generated music and sound effects (ElevenLabs Music and Sound Effects), sound normalized for social networks
+- Formats 9:16 ("link in my bio") and 16:9 ("link in the description")
 
 ## Installation
 
@@ -19,24 +19,24 @@ lève le pouce. La caméra bouge, les mots clés surgissent au rythme de la voix
 git clone https://github.com/jiordiviera/create-voiced-ad ~/.claude/skills/create-voiced-ad
 ```
 
-Puis, dans Claude Code : « fais une vidéo pub avec voix off et personnage animé pour mon app », ou `/create-voiced-ad`.
+Then, in Claude Code: "make a video ad with a voiceover and an animated character for my app", or `/create-voiced-ad`.
 
-## Prérequis
+## Requirements
 
-- Un projet avec Remotion (le skill l'ajoute sinon), `ffmpeg`, `tsx`
-- Une clé ElevenLabs dans `.env.local` (`ELEVENLABS_API_KEY`), avec les permissions Text to Speech,
-  Voices (lecture), Music et Sound Effects. Vérifie que ton forfait autorise l'usage commercial avant de diffuser.
+- A project with Remotion (the skill adds it otherwise), `ffmpeg`, `tsx`
+- An ElevenLabs key in `.env.local` (`ELEVENLABS_API_KEY`), with the permissions Text to Speech,
+  Voices (read), Music and Sound Effects. ElevenLabs usage is paid by your plan; check that your plan allows commercial use before publishing.
 
-## Contenu
+## Contents
 
-| Chemin | Rôle |
+| Path | Role |
 |---|---|
-| `SKILL.md` | Instructions pour Claude : déroulé, validation, pièges, critères de réussite |
-| `references/` | Vocabulaire de gestes, pièges techniques, déroulé détaillé, journal des retours |
-| `templates/` | Code de départ (Remotion + scripts de génération audio), tiré du projet [Mbeng](https://mbeng.jiordiviera.me) |
+| `SKILL.md` | Instructions for Claude: workflow, validation, pitfalls, success criteria |
+| `references/` | Gesture vocabulary, technical pitfalls, detailed workflow, feedback journal |
+| `templates/` | Starter code (Remotion + audio generation scripts), taken from the [Mbeng](https://mbeng.jiordiviera.me) project |
 
-Le skill s'améliore à chaque vidéo : les retours et nouveaux gestes sont ajoutés au journal et aux modèles.
+The skill improves with every video: feedback and new gestures are added to the journal and the templates.
 
-## Licence
+## License
 
 MIT
