@@ -1,0 +1,35 @@
+{
+  "name": "create-voiced-ad-community-promo",
+  "private": true,
+  "description": "Agensi launch trailer for the free Create Voiced Ad Community Edition, built with the skill's own Remotion templates.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "voice": "tsx --env-file-if-exists=.env.local scripts/generate-voiceover.mts",
+    "music": "tsx scripts/generate-music.mts",
+    "screen": "remotion still src/index.ts QuietdeskScreen public/demo/screen.png",
+    "render:demo": "remotion render src/index.ts QuietdeskAdHorizontal out/quietdesk-demo-16x9.mp4",
+    "render:promo": "tsx scripts/render-promo.mts CommunityPromo16x9 ../demos/agensi-community-promo-16x9.mp4",
+    "render:promo:vertical": "tsx scripts/render-promo.mts CommunityPromo9x16 ../demos/agensi-community-promo-9x16.mp4",
+    "thumbnail": "remotion still src/index.ts CommunityPromoThumbnail ../demos/agensi-community-promo-thumbnail.png",
+    "srt": "tsx scripts/export-srt.mts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.533",
+    "@remotion/google-fonts": "4.0.533",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.533"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.0",
+    "@types/react": "19.1.12",
+    "tsx": "4.20.3",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  },
+  "packageManager": "pnpm@12.14.0"
+}

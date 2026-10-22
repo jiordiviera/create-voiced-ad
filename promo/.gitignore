@@ -1,0 +1,7 @@
+node_modules/
+out/
+.env
+.env.*
+!.env.example
+public/music/
+public/sfx/

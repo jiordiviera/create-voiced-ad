@@ -1,0 +1,59 @@
+1
+00:00:00,750 --> 00:00:02,332
+What if creating a video ad was
+
+2
+00:00:02,352 --> 00:00:04,569
+as simple as describing your idea?
+
+3
+00:00:04,750 --> 00:00:07,257
+Writing scripts, recording voiceovers,
+
+4
+00:00:07,281 --> 00:00:10,798
+animating scenes, and adding captions takes time.
+
+5
+00:00:11,050 --> 00:00:13,456
+Create Voiced Ad brings these steps together
+
+6
+00:00:13,476 --> 00:00:15,844
+in a reusable Claude Code workflow.
+
+7
+00:00:18,550 --> 00:00:20,550
+Bring your message to life with animated
+
+8
+00:00:20,570 --> 00:00:24,412
+characters, AI narration, synchronized speech,
+
+9
+00:00:24,506 --> 00:00:25,805
+and captions.
+
+10
+00:00:26,350 --> 00:00:28,625
+[Quietdesk demo ad] Is your support inbox on fire again?
+
+11
+00:00:29,250 --> 00:00:31,803
+Built with Remotion, open source,
+
+12
+00:00:31,827 --> 00:00:34,369
+and ready for developers to customize.
+
+13
+00:00:34,750 --> 00:00:36,785
+Create your next voiced ad with Create
+
+14
+00:00:36,805 --> 00:00:37,628
+Voiced Ad.
+
+15
+00:00:37,920 --> 00:00:39,823
+Get the free Community Edition.
