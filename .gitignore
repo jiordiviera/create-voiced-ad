@@ -1,0 +1,2 @@
+# Rendered videos are large binaries: attach them to a release instead of committing them.
+demos/*.mp4
